@@ -10,11 +10,16 @@
   </thead>
 
   <tbody>
+      <tr>
+        <th>Name</th>
+        <th colspan="3">Actions</th>
+      </tr>
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= link_to 'Show', [, contact] %></td>
-        <td><%= link_to 'Edit', edit__contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', [, contact], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= contact.name %></td>
+        <td><%= link_to 'Show', [@user, contact] %></td>
+        <td><%= link_to 'Edit', edit_user_contact_path(@user, contact) %></td>
+        <td><%= link_to 'Destroy', [@user, contact], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Contact', new__contact_path %>
+<%= link_to 'New Contact', new_user_contact_path(@user) %>
