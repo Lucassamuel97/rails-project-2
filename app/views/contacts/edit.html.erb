@@ -2,5 +2,5 @@
 
 <%= render 'form', contact: @contact %>
 
-<%= link_to 'Show', @contact %> |
-<%= link_to 'Back', _contacts_path %>
+<%= link_to 'Show', user_contact_path(@user, @contact) %> |
+<%= link_to 'Back', user_contacts_path(@user) %>
