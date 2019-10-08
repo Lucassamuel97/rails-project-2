@@ -10,5 +10,14 @@
   <%= @contact.birthday %>
 </p>
 
+<p>
+  <strong>Phones</strong>
+  <% @contact.phones.each do |phone| %>
+  <p>
+    <%= phone.number %>
+  </p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_contact_path(@user, @contact) %> |
 <%= link_to 'Back', user_contacts_path(@user) %>

@@ -1,4 +1,4 @@
-<%= form_with(model: [@user, contact], local: true) do |form| %>
+<%= form_with(model: [@user, contact], local: true) do |f| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -12,16 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :birthday %>
-    <%= form.date_field :birthday %>
+    <%= f.label :birthday %>
+    <%= f.date_field :birthday %>
+  </div>
+
+  <div>
+    <%= f.fields_for :phones do |builder| %>
+      <%= render "phone_fields", f: builder %>
+    <% end %>
+    <p><%= link_to_add_fields "Add Phone", f, :phones %></p>
   </div>
   
+
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
